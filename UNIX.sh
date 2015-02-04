@@ -26,8 +26,8 @@ echo "begining to modify litecoin.conf"
 echo "creating random username and passwork for rpc"
 rpcusername=`< /dev/urandom tr -dc A-Za-z0-9 | head -c30`
 rpcpass=`< /dev/urandom tr -dc A-Za-z0-9 | head -c30`
-echo "rpcuser=rpcusername" >> /root/.litecoin/litecoin.conf
-echo "rpcpassword=rpcpass" >> /root/.litecoin/litecoin.conf
+echo "rpcuser=$rpcusername" >> /root/.litecoin/litecoin.conf
+echo "rpcpassword=$rpcpass" >> /root/.litecoin/litecoin.conf
 echo "sucessful username and passcode creation"
 echo "just adding some extra things..."
 echo "addnode=ltc.lurkmore.com" >> /root/.litecoin/litecoin.conf
