@@ -47,3 +47,6 @@ echo "litecoin.conf has been modified"
 echo "will start to run server"
 cd litecoin-0.8.7.5-linux/bin/64
 ./litecoind -reindex
+echo "If you can't enter more commands, press the return/enter key."
+echo "Congrats on running a Litecoin Supernode using losh11's one-line script! If you had encountered any issues during this process, please contact me on GitHub."
+echo "You can find my GitHub account at:- https://github.com/losh11"
