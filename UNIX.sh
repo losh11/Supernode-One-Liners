@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "logging in..."
-sudo su
+# sudo su seems to kill script.
 echo "updating server"
 apt-get update -y
 apt-get upgrade -y
