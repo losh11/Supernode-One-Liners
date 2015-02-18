@@ -44,10 +44,15 @@ echo "daemon=1" >> /root/.litecoin/litecoin.conf
 echo "disablewallet=1" >> /root/.litecoin/litecoin.conf
 echo "maxconnections=150" >> /root/.litecoin/litecoin.conf
 echo "litecoin.conf has been modified"
-echo "will start to run server"
+echo "cleaning up..."
+rm litecoin-0.8.7.5-linux.tar.xz
+echo "will start to run server soon"
 # sudo bash
 # cd litecoin-0.8.7.5-linux/bin/64
 # ./litecoind -reindex
+find / -iname litecoind -exec cp {} /usr \;
+cd /usr
+./litecoind -reindex
 echo "If you can't enter more commands, press the return/enter key."
 echo "Congrats on running a Litecoin Supernode using losh11's one-line script! If you had encountered any issues during this process, please contact me on GitHub."
 echo "You can find my GitHub account at:- https://github.com/losh11"
