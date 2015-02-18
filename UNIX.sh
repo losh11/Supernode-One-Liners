@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "logging in..."
 sudo su
 echo "updating server"
 apt-get update upgrade
