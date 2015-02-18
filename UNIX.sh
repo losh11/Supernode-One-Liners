@@ -1,6 +1,8 @@
 #!/bin/bash
 echo "logging in..."
 sudo su
+echo "change the root passcode"
+passwd
 echo "updating server"
 apt-get update -y
 apt-get upgrade -y
