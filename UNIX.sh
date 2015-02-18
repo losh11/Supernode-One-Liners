@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "logging in..."
 # sudo su
+cd ~
 echo "change the root passcode"
 passwd
 echo "updating server"
