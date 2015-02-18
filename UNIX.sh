@@ -45,6 +45,7 @@ echo "disablewallet=1" >> /root/.litecoin/litecoin.conf
 echo "maxconnections=150" >> /root/.litecoin/litecoin.conf
 echo "litecoin.conf has been modified"
 echo "will start to run server"
+sudo bash
 cd litecoin-0.8.7.5-linux/bin/64
 ./litecoind -reindex
 echo "If you can't enter more commands, press the return/enter key."
