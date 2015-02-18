@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo su
 echo "updating server"
 apt-get update upgrade
@@ -17,13 +18,19 @@ echo "downloaded litecoin 0.8.7.5"
 tar xvfJ litecoin-0.8.7.5-linux.tar.xz
 cd litecoin-0.8.7.5-linux/bin/64
 mkdir /root/.litecoin
+# echo "downloading BitTorrent Sync for bootstrap"
+# echo "cd ~/watch || exit    # set your watch directory here" >> magnet.sh
+# echo "[[ "$1" =~ xt=urn:btih:([^&/]+) ]] || exit" >> magnet.sh
+# echo "echo "d10:magnet-uri${#1}:${1}e" > "meta-${BASH_REMATCH[1]}.torrent"" >> magnet.sh
+# echo "xmessage -nearmouse 'torrent added to rtorrent'" >> magnet.sh
+# chmod 0755 magnet.sh
+# ./magnet.sh "magnet:?xt=urn:btih:FCC23B19F4BF15E77AB668900C2B82523CC9872A"
 echo "downloading bootstrap.dat making the block sync faster."
 wget http://192.3.159.171/files/bootstrap/bootstrap.dat.xz -P /root/.litecoin/
 cd /root/.litecoin/
-xz -d bootstrap.dat.xz
 echo "extracted bootstrap.dat"
 echo "begining to modify litecoin.conf"
-echo "creating random username and passwork for rpc"
+echo "creating random username and password for rpc"
 rpcusername=`< /dev/urandom tr -dc A-Za-z0-9 | head -c30`
 rpcpass=`< /dev/urandom tr -dc A-Za-z0-9 | head -c30`
 echo "rpcuser=$rpcusername" >> /root/.litecoin/litecoin.conf
@@ -35,5 +42,5 @@ echo "daemon=1" >> /root/.litecoin/litecoin.conf
 echo "disablewallet=1" >> /root/.litecoin/litecoin.conf
 echo "maxconnections=150" >> /root/.litecoin/litecoin.conf
 echo "litecoin.conf has been modified"
-echo "now rebooting setup will continue in a minuite"
-reboot
+echo "will start to run server"
+./litecoind -txindex
