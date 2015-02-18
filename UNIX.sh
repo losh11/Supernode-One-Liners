@@ -2,9 +2,10 @@
 echo "logging in..."
 sudo su
 echo "updating server"
-apt-get update upgrade
+apt-get update -y
+apt-get upgrade -y
 echo "getting front-side package for iptable"
-apt-get install ufw
+apt-get install ufw -y
 ufw enable allow ssh
 ufw allow ssh
 echo "allowed ssh access"
