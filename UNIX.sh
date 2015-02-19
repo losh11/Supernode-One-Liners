@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "logging in..."
-# sudo su seems to kill script.
 echo "updating server"
 apt-get update -y
 apt-get upgrade -y
 echo "getting front-side package for iptable"
 apt-get install ufw -y
+echo "If asked yes or no, please reply with 'yes' (most probably a 'y' should do)"
 ufw enable allow ssh
 ufw allow ssh
 echo "allowed ssh access"
@@ -30,6 +30,7 @@ mkdir /root/.litecoin
 echo "downloading bootstrap.dat making the block sync faster."
 wget http://192.3.159.171/files/bootstrap/bootstrap.dat.xz -P /root/.litecoin/
 cd /root/.litecoin/
+rm /bootstrap.dat.xz
 echo "extracted bootstrap.dat"
 echo "begining to modify litecoin.conf"
 echo "creating random username and password for rpc"
@@ -44,15 +45,23 @@ echo "daemon=1" >> /root/.litecoin/litecoin.conf
 echo "disablewallet=1" >> /root/.litecoin/litecoin.conf
 echo "maxconnections=150" >> /root/.litecoin/litecoin.conf
 echo "litecoin.conf has been modified"
-echo "cleaning up..."
-rm litecoin-0.8.7.5-linux.tar.xz
-echo "will start to run server soon"
+echo "attempting to start server"
 # sudo bash
 # cd litecoin-0.8.7.5-linux/bin/64
 # ./litecoind -reindex
 find / -iname litecoind -exec cp {} /usr \;
 cd /usr
 ./litecoind -reindex
+echo "************************************************************************************************************************************************************************************************************************************"
+echo " "
+echo " "
+echo " "
 echo "If you can't enter more commands, press the return/enter key."
 echo "Congrats on running a Litecoin Supernode using losh11's one-line script! If you had encountered any issues during this process, please contact me on GitHub."
+echo "Please remember that the litecoind client is being ran from '/etc/' and not from your home/root directory."
+echo "Most of the solutions to your technical problems can be solved by entering the command 'sudo su' - giving yourself administrator rights - and running this script again by typing 'sudo bash UNIX.sh'"
 echo "You can find my GitHub account at:- https://github.com/losh11"
+echo " "
+echo " "
+echo " "
+echo "************************************************************************************************************************************************************************************************************************************"
